@@ -1,5 +1,1207 @@
 <!-- tabs.component.html -->
 <div class="flex flex-col app-bg-white-1 px-12 pb-10">
+  <div class="flex flex-row">
+    <div
+      class="
+        flex flex-col
+        w-40
+        app-bg-blue-1
+        pl-5
+        py-3
+        mr-3
+        rounded-tl-2xl rounded-tr-2xl
+      "
+      [class.active]="activeTab === 'queue'"
+      (click)="setActiveTab('queue')"
+    >
+      <span
+        class="text-3xl text-white font-bold"
+        [class.app-color-blue-1]="activeTab === 'queue'"
+        >06</span
+      >
+      <span
+        class="text-md text-white font-semibold"
+        [class.app-color-blue-1]="activeTab === 'queue'"
+        >Queue</span
+      >
+    </div>
+    <div
+      class="
+        flex flex-col
+        w-40
+        app-bg-blue-1
+        pl-5
+        py-3
+        mr-3
+        rounded-tl-2xl rounded-tr-2xl
+      "
+      [class.active]="activeTab === 'earlier'"
+      (click)="setActiveTab('earlier')"
+    >
+      <span
+        class="text-3xl text-white font-bold"
+        [class.app-color-blue-1]="activeTab === 'earlier'"
+        >02</span
+      >
+      <span
+        class="text-md text-white font-semibold"
+        [class.app-color-blue-1]="activeTab === 'earlier'"
+        >Earlier</span
+      >
+    </div>
+    <div
+      class="
+        flex flex-col
+        w-40
+        app-bg-blue-1
+        pl-5
+        py-3
+        mr-3
+        rounded-tl-2xl rounded-tr-2xl
+      "
+      [class.active]="activeTab === 'waitlist'"
+      (click)="setActiveTab('waitlist')"
+    >
+      <span class="text-3xl text-white font-bold">05</span>
+      <span class="text-md text-white font-semibold">Wait List</span>
+    </div>
+    <div
+      class="
+        flex flex-col
+        w-40
+        app-bg-blue-1
+        pl-5
+        py-3
+        mr-3
+        rounded-tl-2xl rounded-tr-2xl
+      "
+      [class.active]="activeTab === 'noshow'"
+      (click)="setActiveTab('noshow')"
+    >
+      <span class="text-3xl text-white font-bold">0</span>
+      <span class="text-md text-white font-semibold">No Show</span>
+    </div>
+  </div>
+  <div
+    class="flex flex-row bg-white p-10 relative"
+    [hidden]="activeTab !== 'queue'"
+  >
+    <div
+      class="
+        absolute
+        app-bg-yellow-3
+        text-xs
+        font-semibold
+        px-3
+        py-0.5
+        rounded-br-md rounded-tl-md
+        text-white
+      "
+      style="top: 76px"
+    >
+      New
+    </div>
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th class="text-left text-xs app-color-black pb-5">PATIENT</th>
+          <th class="text-left text-xs app-color-black pb-5">CONTACT</th>
+          <th class="text-left text-xs app-color-black pb-5">APPOINTMENT</th>
+          <th class="text-left text-xs app-color-black pb-5">WAITED</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="app-border-1">
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3 ml-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 8h16M4 16h16"
+              ></path>
+            </svg>
+          </td>
+          <td>
+            <div
+              class="
+                flex
+                justify-center
+                items-center
+                rounded-md
+                w-8
+                h-8
+                app-bg-yellow-2 app-color-yellow-1
+                text-lg
+                font-semibold
+              "
+            >
+              1
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row py-3">
+              <div class="mr-5 w-10 h-10 bg-gray-100 rounded-full"></div>
+              <div class="flex flex-col">
+                <span class="font-semibold text-sm app-color-black"
+                  >Varun Bose</span
+                >
+                <span class="font-semibold text-xs app-color-gray-1"
+                  >Male, 32 yr</span
+                >
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1"
+              >9999999999</span
+            >
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
+          </td>
+          <td>
+            <div
+              class="
+                app-bg-red-2
+                h-8
+                w-28
+                font-semibold
+                text-sm
+                flex
+                justify-center
+                items-center
+                app-color-red-1
+                rounded-md
+              "
+            >
+              56 Mins
+            </div>
+          </td>
+          <td>
+            <button
+              class="
+                flex
+                items-center
+                justify-center
+                app-button-shadow
+                w-32
+                py-2
+                rounded-3xl
+              "
+            >
+              <svg
+                class="w-6 h-6 app-color-green"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                ></path>
+              </svg>
+              <span class="ml-3 font-semibold text-md app-color-gray-1"
+                >Vitals</span
+              >
+            </button>
+          </td>
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+              ></path>
+            </svg>
+          </td>
+        </tr>
+        <tr class="app-border-1">
+          <td class="w-6 h-6">
+            <svg
+              class="ml-3 w-6 h-6 app-color-blue-3 mr-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 8h16M4 16h16"
+              ></path>
+            </svg>
+          </td>
+          <td>
+            <div
+              class="
+                mr-4
+                w-8
+                h-8
+                rounded-md
+                flex
+                items-center
+                justify-center
+                app-bg-blue-2 app-color-blue-1
+                text-lg
+                font-semibold
+              "
+            >
+              2
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row items-center py-3">
+              <div class="w-10 h-10 bg-yellow-50 rounded-full mr-5"></div>
+              <div class="flex flex-col">
+                <span class="font-semibold text-sm app-color-black">Sufia</span>
+                <span class="font-semibold text-xs app-color-gray-1"
+                  >Female, 28 yr</span
+                >
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1"
+              >9999999999</span
+            >
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
+          </td>
+          <td>
+            <div
+              class="
+                h-8
+                w-28
+                font-semibold
+                text-sm
+                app-bg-red-2
+                flex
+                items-center
+                justify-center
+                app-color-red-1
+                rounded-md
+              "
+            >
+              56 Mins
+            </div>
+          </td>
+          <td>
+            <button
+              class="
+                flex
+                items-center
+                justify-center
+                rounded-3xl
+                shadow-md
+                w-32
+                py-2
+                app-button-shadow
+              "
+            >
+              <svg
+                class="w-6 h-6 app-color-green"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                ></path>
+              </svg>
+              <span class="ml-3 font-semibold text-md app-color-gray-1"
+                >Vitals</span
+              >
+            </button>
+          </td>
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+              ></path>
+            </svg>
+          </td>
+        </tr>
+        <tr class="app-border-1">
+          <td class="w-6 h-6">
+            <svg
+              class="ml-3 w-6 h-6 app-color-blue-3 mr-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 8h16M4 16h16"
+              ></path>
+            </svg>
+          </td>
+          <td>
+            <div
+              class="
+                mr-4
+                w-8
+                h-8
+                rounded-md
+                flex
+                items-center
+                justify-center
+                app-bg-yellow-2 app-color-yellow-1
+                text-lg
+                font-semibold
+              "
+            >
+              3
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row items-center py-3">
+              <div class="w-10 h-10 bg-green-100 rounded-full mr-5"></div>
+              <div class="flex flex-col">
+                <span class="font-semibold text-sm app-color-black"
+                  >John Wick</span
+                >
+                <span class="font-semibold text-xs app-color-gray-1"
+                  >Male, 45 yr</span
+                >
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1"
+              >9999999999</span
+            >
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
+          </td>
+          <td>
+            <div
+              class="
+                h-8
+                w-28
+                font-semibold
+                text-sm
+                app-bg-blue-2
+                flex
+                items-center
+                justify-center
+                app-color-blue-1
+                rounded-md
+              "
+            >
+              Not Arrived
+            </div>
+          </td>
+          <td>
+            <button
+              class="
+                flex
+                items-center
+                justify-center
+                rounded-3xl
+                shadow-md
+                w-32
+                py-2
+                app-button-shadow
+              "
+            >
+              <svg
+                class="w-6 h-6 app-color-blue-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span class="ml-3 font-semibold text-md app-color-gray-1"
+                >Checkin</span
+              >
+            </button>
+          </td>
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+              ></path>
+            </svg>
+          </td>
+        </tr>
+        <tr class="app-border-1">
+          <td class="w-6 h-6">
+            <svg
+              class="ml-3 w-6 h-6 app-color-blue-3 mr-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 8h16M4 16h16"
+              ></path>
+            </svg>
+          </td>
+          <td>
+            <div
+              class="
+                mr-4
+                w-8
+                h-8
+                rounded-md
+                flex
+                items-center
+                justify-center
+                app-bg-blue-2 app-color-blue-1
+                text-lg
+                font-semibold
+              "
+            >
+              4
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row items-center py-3">
+              <div class="w-10 h-10 bg-pink-100 rounded-full mr-5"></div>
+              <div class="flex flex-col">
+                <span class="font-semibold text-sm app-color-black"
+                  >Johny Ive</span
+                >
+                <span class="font-semibold text-xs app-color-gray-1"
+                  >Male, 31 yr</span
+                >
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1"
+              >9999999999</span
+            >
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
+          </td>
+          <td>
+            <div
+              class="
+                h-8
+                w-28
+                font-semibold
+                text-sm
+                app-bg-blue-2
+                flex
+                items-center
+                justify-center
+                app-color-blue-1
+                rounded-md
+              "
+            >
+              Not Arrived
+            </div>
+          </td>
+          <td>
+            <button
+              class="
+                flex
+                items-center
+                justify-center
+                rounded-3xl
+                shadow-md
+                w-32
+                py-2
+                app-button-shadow
+              "
+            >
+              <svg
+                class="w-6 h-6 app-color-blue-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span class="ml-3 font-semibold text-md app-color-gray-1"
+                >Checkin</span
+              >
+            </button>
+          </td>
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+              ></path>
+            </svg>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="flex flex-row bg-white p-10 relative"
+    [hidden]="activeTab !== 'earlier'"
+  >
+    <div
+      class="
+        absolute
+        app-bg-yellow-3
+        text-xs
+        font-semibold
+        px-3
+        py-0.5
+        rounded-br-md rounded-tl-md
+        text-white
+      "
+      style="top: 76px"
+    >
+      New
+    </div>
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th class="text-left text-xs app-color-black pb-5">PATIENT</th>
+          <th class="text-left text-xs app-color-black pb-5">CONTACT</th>
+          <th class="text-left text-xs app-color-black pb-5">APPOINTMENT</th>
+          <th class="text-left text-xs app-color-black pb-5">WAITED</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <div
+    class="flex flex-row bg-white p-10 relative"
+    [hidden]="activeTab !== 'waitlist'"
+  >
+    <div
+      class="
+        absolute
+        app-bg-yellow-3
+        text-xs
+        font-semibold
+        px-3
+        py-0.5
+        rounded-br-md rounded-tl-md
+        text-white
+      "
+      style="top: 76px"
+    >
+      New
+    </div>
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th class="text-left text-xs app-color-black pb-5">PATIENT</th>
+          <th class="text-left text-xs app-color-black pb-5">CONTACT</th>
+          <th class="text-left text-xs app-color-black pb-5">APPOINTMENT</th>
+          <th class="text-left text-xs app-color-black pb-5">WAITED</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="app-border-1">
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3 ml-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 8h16M4 16h16"
+              ></path>
+            </svg>
+          </td>
+          <td>
+            <div
+              class="
+                flex
+                justify-center
+                items-center
+                rounded-md
+                w-8
+                h-8
+                app-bg-yellow-2 app-color-yellow-1
+                text-lg
+                font-semibold
+              "
+            >
+              1
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row py-3">
+              <div class="mr-5 w-10 h-10 bg-gray-100 rounded-full"></div>
+              <div class="flex flex-col">
+                <span class="font-semibold text-sm app-color-black"
+                  >Varun Bose</span
+                >
+                <span class="font-semibold text-xs app-color-gray-1"
+                  >Male, 32 yr</span
+                >
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1"
+              >9999999999</span
+            >
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
+          </td>
+          <td>
+            <div
+              class="
+                app-bg-red-2
+                h-8
+                w-28
+                font-semibold
+                text-sm
+                flex
+                justify-center
+                items-center
+                app-color-red-1
+                rounded-md
+              "
+            >
+              56 Mins
+            </div>
+          </td>
+          <td>
+            <button
+              class="
+                flex
+                items-center
+                justify-center
+                app-button-shadow
+                w-32
+                py-2
+                rounded-3xl
+              "
+            >
+              <svg
+                class="w-6 h-6 app-color-green"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                ></path>
+              </svg>
+              <span class="ml-3 font-semibold text-md app-color-gray-1"
+                >Vitals</span
+              >
+            </button>
+          </td>
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+              ></path>
+            </svg>
+          </td>
+        </tr>
+        <tr class="app-border-1">
+          <td class="w-6 h-6">
+            <svg
+              class="ml-3 w-6 h-6 app-color-blue-3 mr-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 8h16M4 16h16"
+              ></path>
+            </svg>
+          </td>
+          <td>
+            <div
+              class="
+                mr-4
+                w-8
+                h-8
+                rounded-md
+                flex
+                items-center
+                justify-center
+                app-bg-blue-2 app-color-blue-1
+                text-lg
+                font-semibold
+              "
+            >
+              2
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row items-center py-3">
+              <div class="w-10 h-10 bg-yellow-50 rounded-full mr-5"></div>
+              <div class="flex flex-col">
+                <span class="font-semibold text-sm app-color-black">Sufia</span>
+                <span class="font-semibold text-xs app-color-gray-1"
+                  >Female, 28 yr</span
+                >
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1"
+              >9999999999</span
+            >
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
+          </td>
+          <td>
+            <div
+              class="
+                h-8
+                w-28
+                font-semibold
+                text-sm
+                app-bg-red-2
+                flex
+                items-center
+                justify-center
+                app-color-red-1
+                rounded-md
+              "
+            >
+              56 Mins
+            </div>
+          </td>
+          <td>
+            <button
+              class="
+                flex
+                items-center
+                justify-center
+                rounded-3xl
+                shadow-md
+                w-32
+                py-2
+                app-button-shadow
+              "
+            >
+              <svg
+                class="w-6 h-6 app-color-green"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                ></path>
+              </svg>
+              <span class="ml-3 font-semibold text-md app-color-gray-1"
+                >Vitals</span
+              >
+            </button>
+          </td>
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+              ></path>
+            </svg>
+          </td>
+        </tr>
+        <tr class="app-border-1">
+          <td class="w-6 h-6">
+            <svg
+              class="ml-3 w-6 h-6 app-color-blue-3 mr-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 8h16M4 16h16"
+              ></path>
+            </svg>
+          </td>
+          <td>
+            <div
+              class="
+                mr-4
+                w-8
+                h-8
+                rounded-md
+                flex
+                items-center
+                justify-center
+                app-bg-yellow-2 app-color-yellow-1
+                text-lg
+                font-semibold
+              "
+            >
+              3
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row items-center py-3">
+              <div class="w-10 h-10 bg-green-100 rounded-full mr-5"></div>
+              <div class="flex flex-col">
+                <span class="font-semibold text-sm app-color-black"
+                  >John Wick</span
+                >
+                <span class="font-semibold text-xs app-color-gray-1"
+                  >Male, 45 yr</span
+                >
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1"
+              >9999999999</span
+            >
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
+          </td>
+          <td>
+            <div
+              class="
+                h-8
+                w-28
+                font-semibold
+                text-sm
+                app-bg-blue-2
+                flex
+                items-center
+                justify-center
+                app-color-blue-1
+                rounded-md
+              "
+            >
+              Not Arrived
+            </div>
+          </td>
+          <td>
+            <button
+              class="
+                flex
+                items-center
+                justify-center
+                rounded-3xl
+                shadow-md
+                w-32
+                py-2
+                app-button-shadow
+              "
+            >
+              <svg
+                class="w-6 h-6 app-color-blue-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span class="ml-3 font-semibold text-md app-color-gray-1"
+                >Checkin</span
+              >
+            </button>
+          </td>
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+              ></path>
+            </svg>
+          </td>
+        </tr>
+        <tr class="app-border-1">
+          <td class="w-6 h-6">
+            <svg
+              class="ml-3 w-6 h-6 app-color-blue-3 mr-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 8h16M4 16h16"
+              ></path>
+            </svg>
+          </td>
+          <td>
+            <div
+              class="
+                mr-4
+                w-8
+                h-8
+                rounded-md
+                flex
+                items-center
+                justify-center
+                app-bg-blue-2 app-color-blue-1
+                text-lg
+                font-semibold
+              "
+            >
+              4
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row items-center py-3">
+              <div class="w-10 h-10 bg-pink-100 rounded-full mr-5"></div>
+              <div class="flex flex-col">
+                <span class="font-semibold text-sm app-color-black"
+                  >Johny Ive</span
+                >
+                <span class="font-semibold text-xs app-color-gray-1"
+                  >Male, 31 yr</span
+                >
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1"
+              >9999999999</span
+            >
+          </td>
+          <td>
+            <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
+          </td>
+          <td>
+            <div
+              class="
+                h-8
+                w-28
+                font-semibold
+                text-sm
+                app-bg-blue-2
+                flex
+                items-center
+                justify-center
+                app-color-blue-1
+                rounded-md
+              "
+            >
+              Not Arrived
+            </div>
+          </td>
+          <td>
+            <button
+              class="
+                flex
+                items-center
+                justify-center
+                rounded-3xl
+                shadow-md
+                w-32
+                py-2
+                app-button-shadow
+              "
+            >
+              <svg
+                class="w-6 h-6 app-color-blue-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span class="ml-3 font-semibold text-md app-color-gray-1"
+                >Checkin</span
+              >
+            </button>
+          </td>
+          <td>
+            <svg
+              class="w-6 h-6 app-color-blue-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+              ></path>
+            </svg>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="flex flex-row bg-white p-10 relative"
+    [hidden]="activeTab !== 'noshow'"
+  >
+    <div
+      class="
+        absolute
+        app-bg-yellow-3
+        text-xs
+        font-semibold
+        px-3
+        py-0.5
+        rounded-br-md rounded-tl-md
+        text-white
+      "
+      style="top: 76px"
+    >
+      New
+    </div>
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th class="text-left text-xs app-color-black pb-5">PATIENT</th>
+          <th class="text-left text-xs app-color-black pb-5">CONTACT</th>
+          <th class="text-left text-xs app-color-black pb-5">APPOINTMENT</th>
+          <th class="text-left text-xs app-color-black pb-5">WAITED</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
   <div class="flex flex-row py-5">
     <span class="text-lg font-bold app-color-black">Home</span>
   </div>
@@ -52,173 +1254,521 @@
         New
       </div>
 
-
       <table class="w-full">
         <thead>
-            <tr>
-                <th></th>
-                <th></th>
-                <th class="text-left text-xs app-color-black pb-5">PATIENT</th>
-                <th class="text-left text-xs app-color-black pb-5">CONTACT</th>
-                <th class="text-left text-xs app-color-black pb-5">APPOINTMENT</th>
-                <th class="text-left text-xs app-color-black pb-5">WAITED</th>
-                <th></th>
-                <th></th>
-            </tr>
+          <tr>
+            <th></th>
+            <th></th>
+            <th class="text-left text-xs app-color-black pb-5">PATIENT</th>
+            <th class="text-left text-xs app-color-black pb-5">CONTACT</th>
+            <th class="text-left text-xs app-color-black pb-5">APPOINTMENT</th>
+            <th class="text-left text-xs app-color-black pb-5">WAITED</th>
+            <th></th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
-            <tr class="app-border-1">
-                <td>
-                    <svg class="w-6 h-6 app-color-blue-3 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path></svg>
-                </td>
-                <td>
-                    <div class="flex justify-center items-center rounded-md w-8 h-8 app-bg-yellow-2 app-color-yellow-1 text-lg font-semibold">1</div>
-                </td>
-                <td>
-                    <div class="flex flex-row py-3">
-                        <div class="mr-5 w-10 h-10 bg-gray-100 rounded-full"></div>
-                        <div class="flex flex-col">
-                            <span class="font-semibold text-sm app-color-black">Varun Bose</span>
-                            <span class="font-semibold text-xs app-color-gray-1">Male, 32 yr</span>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <span class="font-semibold text-sm app-color-gray-1">9999999999</span>
-                </td>
-                <td>
-                    <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
-                </td>
-                <td>
-                    <div class="app-bg-red-2 h-8 w-28 font-semibold text-sm flex justify-center items-center app-color-red-1 rounded-md">
-                        56 Mins
-                    </div>
-                </td>
-                <td>
-                    <button class="flex items-center justify-center app-button-shadow w-32 py-2 rounded-3xl">
-                        <svg class="w-6 h-6 app-color-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
-                        <span class="ml-3 font-semibold text-md app-color-gray-1">Vitals</span>
-                    </button>
-                </td>
-                <td>
-                    <svg class="w-6 h-6 app-color-blue-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-
-                </td>
-            </tr>
-            <tr class="app-border-1">
-                <td class="w-6 h-6">
-                    <svg class="ml-3 w-6 h-6 app-color-blue-3 mr-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path></svg>
-                </td>
-                <td>
-                    <div class="mr-4 w-8 h-8 rounded-md flex items-center justify-center app-bg-blue-2 app-color-blue-1 text-lg font-semibold">2</div>
-                </td>
-                <td>
-                    <div class="flex flex-row items-center py-3">
-                        <div class="w-10 h-10 bg-yellow-50 rounded-full mr-5"></div>
-                        <div class="flex flex-col">
-                            <span class="font-semibold text-sm app-color-black">Sufia</span>
-                            <span class="font-semibold text-xs app-color-gray-1">Female, 28 yr</span>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <span class="font-semibold text-sm app-color-gray-1">9999999999</span>    
-                </td>
-                <td>
-                    <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
-                </td>
-                <td>
-                    <div class="h-8 w-28 font-semibold text-sm app-bg-red-2 flex items-center justify-center app-color-red-1 rounded-md">
-                        56 Mins
-                    </div>
-                </td>
-                <td>
-                    <button class="flex items-center justify-center rounded-3xl shadow-md w-32 py-2 app-button-shadow">
-                        <svg class="w-6 h-6 app-color-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
-                        <span class="ml-3 font-semibold text-md app-color-gray-1">Vitals</span>
-                    </button>
-                </td>
-                <td>
-                    <svg class="w-6 h-6 app-color-blue-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-                </td>
-              </tr>
-              <tr class="app-border-1">
-                <td class="w-6 h-6">
-                    <svg class="ml-3 w-6 h-6 app-color-blue-3 mr-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path></svg>
-                </td>
-                <td>
-                    <div class="mr-4 w-8 h-8 rounded-md flex items-center justify-center app-bg-yellow-2 app-color-yellow-1 text-lg font-semibold">3</div>
-                </td>
-                <td>
-                    <div class="flex flex-row items-center py-3">
-                        <div class="w-10 h-10 bg-green-100 rounded-full mr-5"></div>
-                        <div class="flex flex-col">
-                            <span class="font-semibold text-sm app-color-black">John Wick</span>
-                            <span class="font-semibold text-xs app-color-gray-1">Male, 45 yr</span>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <span class="font-semibold text-sm app-color-gray-1">9999999999</span>    
-                </td>
-                <td>
-                    <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
-                </td>
-                <td>
-                    <div class="h-8 w-28 font-semibold text-sm app-bg-blue-2 flex items-center justify-center app-color-blue-1 rounded-md">
-                        Not Arrived
-                    </div>
-                </td>
-                <td>
-                    <button class="flex items-center justify-center rounded-3xl shadow-md w-32 py-2 app-button-shadow">
-                        <svg class="w-6 h-6 app-color-blue-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>                                <span class="ml-3 font-semibold text-md app-color-gray-1">Checkin</span>
-                    </button>
-                </td>
-                <td>
-                    <svg class="w-6 h-6 app-color-blue-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-                </td>
-              </tr>
-              <tr class="app-border-1">
-                <td class="w-6 h-6">
-                    <svg class="ml-3 w-6 h-6 app-color-blue-3 mr-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path></svg>
-                </td>
-                <td>
-                    <div class="mr-4 w-8 h-8 rounded-md flex items-center justify-center app-bg-blue-2 app-color-blue-1 text-lg font-semibold">4</div>
-                </td>
-                <td>
-                    <div class="flex flex-row items-center py-3">
-                        <div class="w-10 h-10 bg-pink-100 rounded-full mr-5"></div>
-                        <div class="flex flex-col">
-                            <span class="font-semibold text-sm app-color-black">Johny Ive</span>
-                            <span class="font-semibold text-xs app-color-gray-1">Male, 31 yr</span>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <span class="font-semibold text-sm app-color-gray-1">9999999999</span>    
-                </td>
-                <td>
-                    <span class="font-semibold text-sm app-color-gray-1">05:10PM</span>
-                </td>
-                <td>
-                    <div class="h-8 w-28 font-semibold text-sm app-bg-blue-2 flex items-center justify-center app-color-blue-1 rounded-md">
-                        Not Arrived
-                    </div>
-                </td>
-                <td>
-                    <button class="flex items-center justify-center rounded-3xl shadow-md w-32 py-2 app-button-shadow">
-                        <svg class="w-6 h-6 app-color-blue-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>                                
-                        <span class="ml-3 font-semibold text-md app-color-gray-1">Checkin</span>
-                    </button>
-                </td>
-                <td>
-                    <svg class="w-6 h-6 app-color-blue-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-                </td>
-              </tr>
+          <tr class="app-border-1">
+            <td>
+              <svg
+                class="w-6 h-6 app-color-blue-3 ml-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 8h16M4 16h16"
+                ></path>
+              </svg>
+            </td>
+            <td>
+              <div
+                class="
+                  flex
+                  justify-center
+                  items-center
+                  rounded-md
+                  w-8
+                  h-8
+                  app-bg-yellow-2 app-color-yellow-1
+                  text-lg
+                  font-semibold
+                "
+              >
+                1
+              </div>
+            </td>
+            <td>
+              <div class="flex flex-row py-3">
+                <div class="mr-5 w-10 h-10 bg-gray-100 rounded-full"></div>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-sm app-color-black"
+                    >Varun Bose</span
+                  >
+                  <span class="font-semibold text-xs app-color-gray-1"
+                    >Male, 32 yr</span
+                  >
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="font-semibold text-sm app-color-gray-1"
+                >9999999999</span
+              >
+            </td>
+            <td>
+              <span class="font-semibold text-sm app-color-gray-1"
+                >05:10PM</span
+              >
+            </td>
+            <td>
+              <div
+                class="
+                  app-bg-red-2
+                  h-8
+                  w-28
+                  font-semibold
+                  text-sm
+                  flex
+                  justify-center
+                  items-center
+                  app-color-red-1
+                  rounded-md
+                "
+              >
+                56 Mins
+              </div>
+            </td>
+            <td>
+              <button
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  app-button-shadow
+                  w-32
+                  py-2
+                  rounded-3xl
+                "
+              >
+                <svg
+                  class="w-6 h-6 app-color-green"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                  ></path>
+                </svg>
+                <span class="ml-3 font-semibold text-md app-color-gray-1"
+                  >Vitals</span
+                >
+              </button>
+            </td>
+            <td>
+              <svg
+                class="w-6 h-6 app-color-blue-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                ></path>
+              </svg>
+            </td>
+          </tr>
+          <tr class="app-border-1">
+            <td class="w-6 h-6">
+              <svg
+                class="ml-3 w-6 h-6 app-color-blue-3 mr-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 8h16M4 16h16"
+                ></path>
+              </svg>
+            </td>
+            <td>
+              <div
+                class="
+                  mr-4
+                  w-8
+                  h-8
+                  rounded-md
+                  flex
+                  items-center
+                  justify-center
+                  app-bg-blue-2 app-color-blue-1
+                  text-lg
+                  font-semibold
+                "
+              >
+                2
+              </div>
+            </td>
+            <td>
+              <div class="flex flex-row items-center py-3">
+                <div class="w-10 h-10 bg-yellow-50 rounded-full mr-5"></div>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-sm app-color-black"
+                    >Sufia</span
+                  >
+                  <span class="font-semibold text-xs app-color-gray-1"
+                    >Female, 28 yr</span
+                  >
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="font-semibold text-sm app-color-gray-1"
+                >9999999999</span
+              >
+            </td>
+            <td>
+              <span class="font-semibold text-sm app-color-gray-1"
+                >05:10PM</span
+              >
+            </td>
+            <td>
+              <div
+                class="
+                  h-8
+                  w-28
+                  font-semibold
+                  text-sm
+                  app-bg-red-2
+                  flex
+                  items-center
+                  justify-center
+                  app-color-red-1
+                  rounded-md
+                "
+              >
+                56 Mins
+              </div>
+            </td>
+            <td>
+              <button
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  rounded-3xl
+                  shadow-md
+                  w-32
+                  py-2
+                  app-button-shadow
+                "
+              >
+                <svg
+                  class="w-6 h-6 app-color-green"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                  ></path>
+                </svg>
+                <span class="ml-3 font-semibold text-md app-color-gray-1"
+                  >Vitals</span
+                >
+              </button>
+            </td>
+            <td>
+              <svg
+                class="w-6 h-6 app-color-blue-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                ></path>
+              </svg>
+            </td>
+          </tr>
+          <tr class="app-border-1">
+            <td class="w-6 h-6">
+              <svg
+                class="ml-3 w-6 h-6 app-color-blue-3 mr-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 8h16M4 16h16"
+                ></path>
+              </svg>
+            </td>
+            <td>
+              <div
+                class="
+                  mr-4
+                  w-8
+                  h-8
+                  rounded-md
+                  flex
+                  items-center
+                  justify-center
+                  app-bg-yellow-2 app-color-yellow-1
+                  text-lg
+                  font-semibold
+                "
+              >
+                3
+              </div>
+            </td>
+            <td>
+              <div class="flex flex-row items-center py-3">
+                <div class="w-10 h-10 bg-green-100 rounded-full mr-5"></div>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-sm app-color-black"
+                    >John Wick</span
+                  >
+                  <span class="font-semibold text-xs app-color-gray-1"
+                    >Male, 45 yr</span
+                  >
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="font-semibold text-sm app-color-gray-1"
+                >9999999999</span
+              >
+            </td>
+            <td>
+              <span class="font-semibold text-sm app-color-gray-1"
+                >05:10PM</span
+              >
+            </td>
+            <td>
+              <div
+                class="
+                  h-8
+                  w-28
+                  font-semibold
+                  text-sm
+                  app-bg-blue-2
+                  flex
+                  items-center
+                  justify-center
+                  app-color-blue-1
+                  rounded-md
+                "
+              >
+                Not Arrived
+              </div>
+            </td>
+            <td>
+              <button
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  rounded-3xl
+                  shadow-md
+                  w-32
+                  py-2
+                  app-button-shadow
+                "
+              >
+                <svg
+                  class="w-6 h-6 app-color-blue-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <span class="ml-3 font-semibold text-md app-color-gray-1"
+                  >Checkin</span
+                >
+              </button>
+            </td>
+            <td>
+              <svg
+                class="w-6 h-6 app-color-blue-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                ></path>
+              </svg>
+            </td>
+          </tr>
+          <tr class="app-border-1">
+            <td class="w-6 h-6">
+              <svg
+                class="ml-3 w-6 h-6 app-color-blue-3 mr-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 8h16M4 16h16"
+                ></path>
+              </svg>
+            </td>
+            <td>
+              <div
+                class="
+                  mr-4
+                  w-8
+                  h-8
+                  rounded-md
+                  flex
+                  items-center
+                  justify-center
+                  app-bg-blue-2 app-color-blue-1
+                  text-lg
+                  font-semibold
+                "
+              >
+                4
+              </div>
+            </td>
+            <td>
+              <div class="flex flex-row items-center py-3">
+                <div class="w-10 h-10 bg-pink-100 rounded-full mr-5"></div>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-sm app-color-black"
+                    >Johny Ive</span
+                  >
+                  <span class="font-semibold text-xs app-color-gray-1"
+                    >Male, 31 yr</span
+                  >
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="font-semibold text-sm app-color-gray-1"
+                >9999999999</span
+              >
+            </td>
+            <td>
+              <span class="font-semibold text-sm app-color-gray-1"
+                >05:10PM</span
+              >
+            </td>
+            <td>
+              <div
+                class="
+                  h-8
+                  w-28
+                  font-semibold
+                  text-sm
+                  app-bg-blue-2
+                  flex
+                  items-center
+                  justify-center
+                  app-color-blue-1
+                  rounded-md
+                "
+              >
+                Not Arrived
+              </div>
+            </td>
+            <td>
+              <button
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  rounded-3xl
+                  shadow-md
+                  w-32
+                  py-2
+                  app-button-shadow
+                "
+              >
+                <svg
+                  class="w-6 h-6 app-color-blue-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <span class="ml-3 font-semibold text-md app-color-gray-1"
+                  >Checkin</span
+                >
+              </button>
+            </td>
+            <td>
+              <svg
+                class="w-6 h-6 app-color-blue-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                ></path>
+              </svg>
+            </td>
+          </tr>
         </tbody>
-    </table>
+      </table>
       {{ tab.label }}
-
     </div>
   </ng-container>
 </div>
